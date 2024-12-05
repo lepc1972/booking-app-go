@@ -31,9 +31,14 @@ func main() {
 		println("Please insert your last name")
 		fmt.Scan(&lastName) //pointer
 		println("Please insert your email")
-		fmt.Scan(&email) //pointer
+		fmt.Scan(&email)    //pointer
+		if len(email) < 3 { //validate a true mail
+			println("Please insert a valid email")
+			continue
+		}
 		println("Please insert number of tickets")
 		fmt.Scan(&userTickets) //pointer
+
 		//println(userName)
 		//println(&userName)
 		remainingTickets = remainingTickets - uint(userTickets)
@@ -54,7 +59,6 @@ func main() {
 			fmt.Println("Our conference is booked out. Come back next year.")
 			break
 		}
-		continue
 
 	}
 

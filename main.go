@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 
@@ -38,10 +41,21 @@ func main() {
 
 		fmt.Printf("Thanks  %v %v for booking %v tickets. you will receive an email confirmation at %v \n", firstName, lastName, userTickets, email)
 		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
-		fmt.Printf("These are all our bookings: %v\n", bookings)
+		//loop that iterates bookings slice, and gave us just first name
+		firstNames := []string{}
+		for _, booking := range bookings {
+			var names = strings.Fields(booking)
+			firstNames = append(firstNames, names[0])
+		}
+		fmt.Printf("These are all first names of our bookings: %v\n", firstNames)
+
+		if remainingTickets == 0 {
+			//end program
+			fmt.Println("Our conference is booked out. Come back next year.")
+			break
+		}
+		continue
 
 	}
-
-	//ask user for their name
 
 }

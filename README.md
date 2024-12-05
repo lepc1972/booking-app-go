@@ -64,6 +64,22 @@ Displays all booked tickets.
 
 Calculates the number of remaining available tickets.
 
+### `sendingTickets` Function in Go
+
+The `sendingTickets` function simulates sending tickets to a user. It prints a message containing the recipient's details, the number of tickets, and the email address.
+
+## Function Code
+
+```go
+func sendingTickets(userTickets uint, firstName string, lastName string, email string) {
+	// Simulate sending tickets
+	var ticket = fmt.Sprintf("%v tickets for %v %v", userTickets, firstName, lastName)
+	fmt.Println("################")
+	fmt.Printf("Sending ticket:\n %v \n to email address %v\n", ticket, email)
+	fmt.Println("################")
+}
+
+
 Contributing
 ------------
 

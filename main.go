@@ -31,13 +31,22 @@ func main() {
 		println("Please insert your last name")
 		fmt.Scan(&lastName) //pointer
 		println("Please insert your email")
-		fmt.Scan(&email)    //pointer
-		if len(email) < 3 { //validate a true mail
-			println("Please insert a valid email")
-			continue
+		fmt.Scan(&email) //pointer
+
+		if !strings.Contains(email, "@") {
+			fmt.Println("Please insert a valid email")
+			fmt.Scan(&email) //pointer
 		}
+
 		println("Please insert number of tickets")
 		fmt.Scan(&userTickets) //pointer
+
+		if userTickets > int(remainingTickets) {
+			fmt.Printf("We only have %v tickets remaining, so you can't book %v tickets\n", remainingTickets, userTickets)
+			println("Please insert a valid number of tickets")
+			fmt.Scan(&userTickets) //pointer
+
+		}
 
 		//println(userName)
 		//println(&userName)
@@ -45,6 +54,7 @@ func main() {
 		bookings = append(bookings, firstName+" "+lastName)
 
 		fmt.Printf("Thanks  %v %v for booking %v tickets. you will receive an email confirmation at %v \n", firstName, lastName, userTickets, email)
+		sendingTickets(uint(userTickets), firstName, lastName, email)
 		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 		//loop that iterates bookings slice, and gave us just first name
 		firstNames := []string{}
@@ -62,4 +72,12 @@ func main() {
 
 	}
 
+}
+
+func sendingTickets(userTickets uint, firstName string, lastName string, email string) {
+	//send ticket
+	var ticket = fmt.Sprintf("%v tickets for %v %v", userTickets, firstName, lastName)
+	fmt.Println("################")
+	fmt.Printf("Sending ticket:\n %v \n to email address %v\n", ticket, email)
+	fmt.Println("################")
 }
